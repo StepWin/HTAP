@@ -676,9 +676,27 @@ def processFile(h2kElements)
                   locationText = "HouseFile/House/NaturalAirInfiltration/Specifications/BlowerTest"
                   h2kElements[locationText].attributes["airChangeRate"] = value
                   h2kElements[locationText].attributes["isCalculated"] = "true"
-               else
-                  if ( value == "NA" ) # Don't change anything
-                  else fatalerror("Missing H2K #{choiceEntry} tag:#{tag}") end
+               elsif( tag =~ /Opt-BuildingSite/ && value != "NA" )
+                   if(value.to_f < 1 || value.to_f > 8)
+                      fatalerror("In #{choiceEntry}, invalid building site input #{value}")
+                   end
+                   locationText = "HouseFile/House/NaturalAirInfiltration/Specifications/BuildingSite/Terrain"
+                   h2kElements[locationText].attributes["code"] = value
+               elsif( tag =~ /Opt-WallShield/ && value != "NA" )
+                   if(value.to_f < 1 || value.to_f > 5)
+                      fatalerror("In #{choiceEntry}, invalid wall shielding input #{value}")
+                   end
+                   locationText = "HouseFile/House/NaturalAirInfiltration/Specifications/LocalShielding/Walls"
+                   h2kElements[locationText].attributes["code"] = value
+               elsif( tag =~ /Opt-FlueShield/ && value != "NA" )
+                   if(value.to_f < 1 || value.to_f > 5)
+                      fatalerror("In #{choiceEntry}, invalid wall shielding input #{value}")
+                   end
+                   locationText = "HouseFile/House/NaturalAirInfiltration/Specifications/LocalShielding/Flue"
+                   h2kElements[locationText].attributes["code"] = value
+               #else
+               #   if ( value == "NA" ) # Don't change anything
+               #   else fatalerror("Missing H2K #{choiceEntry} tag:#{tag}") end
                end
             
             
@@ -5630,7 +5648,7 @@ def NBC_936_2010_RuleSet( ruleType, elements, locale_HDD, cityName )
    
    # Choices that do NOT depend on ruleType!
    $ruleSetChoices["Opt-StandoffPV"] = "NoPV"
-   $ruleSetChoices["Opt-ACH"] = "ACH_2_5"
+   $ruleSetChoices["Opt-ACH"] = "ACH_NBC"
    $ruleSetChoices["Opt-Baseloads"] = "NBC-Baseloads"
    $ruleSetChoices["Opt-ResultHouseCode"] = "General"
    $ruleSetChoices["Opt-Temperatures"] = "NBC_Temps"
