@@ -613,6 +613,7 @@ def run_these_cases(current_task_files)
           end 
           
           FileUtils.cp( Dir.glob("#{$RunDirs[thread3]}/*.*")  , "#{$SaveDirs[thread3]}" ) 
+          FileUtils.cp( Dir.glob("#{$RunDirs[thread3]}/sim-output/*.*")  , "#{$SaveDirs[thread3]}" ) 
           
           #if ( ! Dir.glob("#{$RunDirs[thread3]}/H2K/WMB_*.txt")[0].nil? ) 
           #  if ( File.file?(Dir.glob("#{$RunDirs[thread3]}/H2K/WMB_*.txt")[0]) )
