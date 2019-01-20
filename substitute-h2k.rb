@@ -4375,14 +4375,17 @@ def createH2KSysType1( elements, sysType1Name )
       elements[locationText].add_element("French")
       locationText = "HouseFile/House/HeatingCooling/Type1/ComboHeatDhw/ComboTankAndPump"
       elements[locationText].add_element("EnergyFactor")
+      locationText = "HouseFile/House/HeatingCooling/Type1/ComboHeatDhw/ComboTankAndPump/EnergyFactor"
       elements[locationText].attributes["useDefaults"] = "true"
       locationText = "HouseFile/House/HeatingCooling/Type1/ComboHeatDhw/ComboTankAndPump"
       elements[locationText].add_element("TankLocation")
+      locationText = "HouseFile/House/HeatingCooling/Type1/ComboHeatDhw/ComboTankAndPump/TankLocation"
       elements[locationText].attributes["code"] = "2"
       elements[locationText].add_element("English")
       elements[locationText].add_element("French")
       locationText = "HouseFile/House/HeatingCooling/Type1/ComboHeatDhw/ComboTankAndPump"
       elements[locationText].add_element("CirculationPump")
+      locationText = "HouseFile/House/HeatingCooling/Type1/ComboHeatDhw/ComboTankAndPump/CirculationPump"
       elements[locationText].attributes["isCalculated"] = "true"
       elements[locationText].attributes["value"] = "0"
       elements[locationText].attributes["hasEnergyEfficientMotor"] = "false"
